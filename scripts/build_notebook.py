@@ -266,6 +266,7 @@ rules = {
 summary = pd.DataFrame({"records_flagged": {k: int(v.sum()) for k, v in rules.items()}})
 summary["percent_of_data"] = (summary["records_flagged"] / len(df) * 100).round(3)
 display(summary)
+summary.to_csv(OUT_DIR / "cleaning_rules_summary.csv")
 
 invalid = np.logical_or.reduce(list(rules.values()))
 print(f"\\nUnique records removed: {invalid.sum():,} of {len(df):,} ({invalid.mean():.2%})")
@@ -317,15 +318,20 @@ code("""stat_cols = ["trip_duration", "haversine_km", "manhattan_km", "speed_kmh
 desc = clean[stat_cols].describe(percentiles=[0.25, 0.5, 0.75]).T
 desc["mode"] = clean[stat_cols].mode().iloc[0]
 desc["skewness"] = clean[stat_cols].skew()
-display(desc[["count", "mean", "50%", "mode", "std", "min", "25%", "75%", "max", "skewness"]].rename(columns={"50%": "median", "25%": "Q1 (25%)", "75%": "Q3 (75%)"}).round(3))""")
+eda_desc = desc[["count", "mean", "50%", "mode", "std", "min", "25%", "75%", "max", "skewness"]].rename(columns={"50%": "median", "25%": "Q1 (25%)", "75%": "Q3 (75%)"}).round(3)
+display(eda_desc)
+eda_desc.to_csv(OUT_DIR / "eda_descriptive_statistics.csv")""")
 
 md("### 4.2 Frequency tables for categorical variables")
 
-code("""for col in ["vendor_id", "passenger_count", "store_and_fwd_flag", "weekday_name", "pickup_month", "is_rush_hour"]:
+code("""freq_frames = []
+for col in ["vendor_id", "passenger_count", "store_and_fwd_flag", "weekday_name", "pickup_month", "is_rush_hour"]:
     vc = clean[col].value_counts().sort_index()
     table = pd.DataFrame({"count": vc, "percent": (vc / len(clean) * 100).round(2)})
     print(f"--- {col} ---")
-    print(table.to_string(), "\\n")""")
+    print(table.to_string(), "\\n")
+    freq_frames.append(table.reset_index().rename(columns={col: "value"}).assign(variable=col)[["variable", "value", "count", "percent"]])
+pd.concat(freq_frames).to_csv(OUT_DIR / "eda_frequency_tables.csv", index=False)""")
 
 md("### 4.3 Distribution of numerical variables")
 
@@ -347,6 +353,7 @@ code("""def iqr_summary(s):
 
 iqr_table = pd.DataFrame({c: iqr_summary(clean[c]) for c in ["trip_duration", "haversine_km", "manhattan_km", "speed_kmh", "passenger_count"]}).T
 display(iqr_table.round(2))
+iqr_table.round(3).to_csv(OUT_DIR / "eda_iqr_outliers.csv")
 
 # Investigate: are the 'outlier' durations real or errors?
 fence = iqr_table.loc["trip_duration", "upper_fence"]

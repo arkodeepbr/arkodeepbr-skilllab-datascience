@@ -1,0 +1,6 @@
+,records_flagged,percent_of_data
+0 passengers,1,0.001
+pickup/dropoff outside NYC bounding box,49,0.049
+duration < 60 s (cancelled / meter error),592,0.592
+duration > 3 h (meter left running),129,0.129
+implied speed > 120 km/h (impossible in city),6,0.006
