@@ -1,0 +1,5 @@
+Model,MAE (s),RMSE (s),Median AE (s),R2 (log scale),RMSLE,Train time (s)
+Baseline (median),442.635,673.792,314.0,-0.001,0.729,0.02
+Linear Regression,253.022,398.76,160.423,0.641,0.437,0.069
+Random Forest,189.888,313.976,118.301,0.779,0.343,17.504
+Gradient Boosting,177.837,295.597,111.623,0.798,0.328,3.204

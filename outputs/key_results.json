@@ -1,0 +1,13 @@
+{
+  "records_raw": 100000,
+  "records_clean": 99239,
+  "records_removed": 761,
+  "median_duration_min": 11.08,
+  "mean_duration_min": 14.0,
+  "corr_distance_duration": 0.766,
+  "best_model": "Gradient Boosting",
+  "best_MAE_sec": 177.8,
+  "baseline_MAE_sec": 442.6,
+  "best_R2_log": 0.798,
+  "best_RMSLE": 0.328
+}
