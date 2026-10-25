@@ -47,6 +47,12 @@ The notebook finds `data/train_sample.csv` automatically. To use the full datase
 
 Kaggle competition [New York City Taxi Trip Duration](https://www.kaggle.com/competitions/nyc-taxi-trip-duration/data), based on 2016 NYC Taxi & Limousine Commission yellow-taxi records. Used for academic purposes under the competition rules.
 
+## Reproducibility
+
+- Random seed 42 is used for the train/test split and all models, so results are repeatable.
+- Tested with Python 3, scikit-learn 1.9.1, pandas 3.0.5 and matplotlib 3.11.2.
+- The full notebook runs in about one minute on a 2-core machine with the 100,000-trip sample.
+
 ## Team
 
 _Add team members and USNs here._
