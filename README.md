@@ -24,14 +24,19 @@ The best model is about 3 minutes off on average (60% better than the baseline),
 notebooks/nyc_taxi_trip_duration.ipynb   Main notebook (all stages + Experiment 3.4), outputs included
 data/train_sample.csv                    Original 100,000-trip sample (Kaggle train.csv)
 data/train_cleaned.csv                   Cleaned data with derived features
+data/DATA_SOURCE.md                      Dataset source documentation (source, size, variables, limitations)
 figures/                                 All charts (fig01 to fig13)
-outputs/                                 model_comparison.csv, actual_vs_predicted_test.csv, key_results.json
-reports/project_proposal.md              Project proposal
-reports/technical_report.md              Technical report (10 sections required by the guidelines)
-reports/viva_presentation_outline.md     Presentation and viva-voce preparation
+outputs/                                 Model comparison, actual vs predicted table, EDA tables (descriptive
+                                         statistics, frequency tables, IQR outliers), cleaning summary, key results
+reports/technical_report.docx            Technical report (10 sections required by the guidelines)
+reports/project_proposal.docx            Project proposal
+reports/*.md                             Markdown versions of the report and proposal, plus the viva outline
 scripts/build_notebook.py                Rebuilds and re-runs the notebook
+scripts/build_reports_docx.js            Builds the Word documents from the notebook outputs
 scripts/observations.py                  Interpretation text used by the notebook
 ```
+
+The presentation (13 slides, Problem → Data → Analysis → Evidence → Insight → Conclusion) is kept outside the repo; see `reports/viva_presentation_outline.md` for its plan and likely viva questions.
 
 ## Run it
 
