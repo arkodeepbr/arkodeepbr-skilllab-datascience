@@ -1,6 +1,6 @@
-# NYC Taxi Trip Duration: Prediction and Performance Analysis
+# NYC Taxi Trip Duration: Exploratory Analysis and Prediction
 
-Mini-project and Experiment 3.4 for **Applied Data Science Skill Lab**, CSE (Data Science), RVCE.
+Mini-project for **Applied Data Science Skill Lab**, CSE (Data Science), RVCE.
 
 The project follows the six-stage workflow from the lab guidelines:
 Problem Identification → Data Acquisition → Data Preparation → Exploratory Data Analysis → Visualization & Predictive Modelling → Interpretation & Presentation.
@@ -21,7 +21,7 @@ The best model is about 3 minutes off on average (60% better than the baseline),
 ## Repository layout
 
 ```
-notebooks/nyc_taxi_trip_duration.ipynb   Main notebook (all stages + Experiment 3.4), outputs included
+notebooks/nyc_taxi_trip_duration.ipynb   Main notebook (all six stages), outputs included
 data/train_sample.csv                    Original 100,000-trip sample (Kaggle train.csv)
 data/train_cleaned.csv                   Cleaned data with derived features
 data/DATA_SOURCE.md                      Dataset source documentation (source, size, variables, limitations)

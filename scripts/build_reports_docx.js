@@ -108,7 +108,7 @@ function technicalReport() {
 
   c.push(h1("1. Introduction and Problem Statement"));
   c.push(p("Taxi trip time in a large city depends on distance, time of day, day of the week and location. Distance alone is a weak predictor because traffic and demand change through the day. This project analyses New York City yellow-taxi trips from January to June 2016 and builds a regression model that predicts **trip duration in seconds** from information known at pickup: the pickup time and the pickup and dropoff coordinates."));
-  c.push(p("Possible uses are estimated time of arrival (ETA) and fare estimation, driver dispatch planning and urban mobility analysis. The work follows the six-stage mini-project workflow and covers Experiment 3.4, Prediction and Performance Analysis using a Trained Machine Learning Model."));
+  c.push(p("Possible uses are estimated time of arrival (ETA) and fare estimation, driver dispatch planning and urban mobility analysis. The work follows the six-stage mini-project workflow."));
 
   c.push(h1("2. Objectives"));
   c.push(...numbered([
@@ -198,7 +198,7 @@ function technicalReport() {
     "5-fold cross-validation gives an RMSLE of 0.326 (+/- 0.003) against 0.328 on the test set, so there is no sign of overfitting.",
   ]));
   c.push(...fig("fig10_model_comparison.png", "Test-set MAE and log-scale R² for each model.", 540));
-  c.push(h2("Actual versus predicted values (Experiment 3.4)"));
+  c.push(h2("Actual versus predicted values"));
   c.push(p("Fifteen random test trips predicted by the Gradient Boosting model. The full test-set table is in outputs/actual_vs_predicted_test.csv."));
   c.push(table(["Trip id", "Pickup", "Distance (km)", "Actual (s)", "Predicted (s)", "Error (s)", "Abs. error %"], data.avp, [1700, 1300, 1400, 1200, 1500, 1200, 1338], { size: 18 }));
   c.push(gap());

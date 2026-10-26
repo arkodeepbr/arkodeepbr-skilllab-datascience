@@ -6,7 +6,7 @@ Flow required by the guidelines: **Problem → Data → Analysis → Evidence �
 
 | # | Stage | Slide | Content and figure |
 |---|---|---|---|
-| 1 | Problem | Title | NYC Taxi Trip Duration: Prediction and Performance Analysis; team names |
+| 1 | Problem | Title | NYC Taxi Trip Duration: Exploratory Analysis and Prediction; team names |
 | 2 | Problem | Why it matters | ETA and fare estimation, dispatch; question: can we predict trip time from pickup information? |
 | 3 | Data | Dataset | Kaggle / NYC TLC 2016; 100,000 trips (of 1.46 M), 11 attributes, Jan to Jun 2016; limitations |
 | 4 | Data | Cleaning | No missing values or duplicates; 761 records (0.76%) removed by 5 rules; 16 features built (table from Stage 3.4) |

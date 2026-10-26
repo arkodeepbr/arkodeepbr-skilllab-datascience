@@ -50,17 +50,15 @@ def obs(key, fallback="_Observation pending._"):
 # --------------------------------------------------------------------------- #
 # Title
 # --------------------------------------------------------------------------- #
-md("""# NYC Taxi Trip Duration: Prediction and Performance Analysis
+md("""# NYC Taxi Trip Duration: Exploratory Analysis and Prediction
 
 **Course:** Applied Data Science Skill Lab, CSE (Data Science), RVCE
-**Mini-Project and Experiment 3.4:** Prediction and Performance Analysis using a Trained Machine Learning Model
+**Mini-Project:** Exploratory Analysis and Prediction of Taxi Trip Duration using Python, Pandas and Scikit-learn
 **Team members:** _add names and USNs_
 
 This notebook follows the six-stage mini-project workflow:
 
-**Problem Identification → Data Acquisition → Data Preparation → Exploratory Data Analysis → Visualization & Predictive Modelling → Interpretation & Presentation**
-
-The eight tasks of Experiment 3.4 are covered inside Stage 5B and are tagged **[Exp 3.4 – Task n]**.""")
+**Problem Identification → Data Acquisition → Data Preparation → Exploratory Data Analysis → Visualization & Predictive Modelling → Interpretation & Presentation**""")
 
 # --------------------------------------------------------------------------- #
 # Stage 1
@@ -485,9 +483,9 @@ obs("viz")
 # --------------------------------------------------------------------------- #
 # Stage 5B
 # --------------------------------------------------------------------------- #
-md("""## Stage 5B: Predictive Modelling (Experiment 3.4)
+md("""## Stage 5B: Predictive Modelling
 
-**[Exp 3.4 – Task 1] Load the dataset and identify input features and target variable.**
+**Load the dataset and identify input features and target variable.**
 The data is already loaded in a Pandas DataFrame (`clean`). The **target** is `trip_duration` (seconds), a continuous number, so this is a **regression** problem. The **inputs** are the 16 pickup-time features chosen in Stage 3.5.""")
 
 code("""X = clean[FEATURES]
@@ -497,7 +495,7 @@ print("Target vector :", y.shape)
 print("\\nFeatures:", list(X.columns))
 print("Task type: regression (continuous target in seconds)")""")
 
-md("""**[Exp 3.4 – Task 2] Preprocess the dataset and divide it into training and testing sets.**
+md("""**Preprocess the dataset and divide it into training and testing sets.**
 Preprocessing was done in Stage 3 (cleaning, derived features). Here the data is split **80% training / 20% testing** with a fixed random seed. The test set is never used to fit any model. The target is modelled on the log scale (`log1p`) because durations are heavily right-skewed, and predictions are converted back to seconds for all reported metrics.""")
 
 code("""from sklearn.model_selection import train_test_split
@@ -508,7 +506,7 @@ print(f"Training set: {X_train.shape[0]:,} trips")
 print(f"Testing set : {X_test.shape[0]:,} trips")
 print(f"\\nMean duration  train: {y_train.mean():.1f} s   test: {y_test.mean():.1f} s  (similar, so the split is representative)")""")
 
-md("""**[Exp 3.4 – Task 3] Train regression models using Scikit-learn.**
+md("""**Train regression models using Scikit-learn.**
 Four models are compared, from simple to flexible:
 1. **Baseline:** always predicts the median training duration (a model must beat this to be useful).
 2. **Linear Regression** on standardised features (interpretable, but assumes straight-line relationships).
@@ -538,12 +536,12 @@ for name, model in models.items():
     fitted[name], fit_seconds[name] = model, time.time() - t0
     print(f"{name:20s} trained in {fit_seconds[name]:5.1f} s")""")
 
-md("""**[Exp 3.4 – Task 4] Use the trained models to predict outcomes for the test records.**""")
+md("""**Use the trained models to predict outcomes for the test records.**""")
 
 code("""predictions = {name: np.expm1(m.predict(X_test)).clip(min=1) for name, m in fitted.items()}   # back to seconds
 print({k: v[:3].round(0).tolist() for k, v in predictions.items()})""")
 
-md("""**[Exp 3.4 – Task 7] Evaluate the predictions using appropriate metrics.**
+md("""**Evaluate the predictions using appropriate metrics.**
 - **MAE** (mean absolute error, seconds): the average size of the error, the main metric for regression in this lab.
 - **RMSE** (seconds): penalises large errors more heavily.
 - **Median AE** (seconds): the typical error, not distorted by a few extreme trips.
@@ -583,7 +581,7 @@ for p in ax[1].patches:
     ax[1].annotate(f"{p.get_height():.3f}", (p.get_x() + p.get_width() / 2, p.get_height()), ha="center", va="bottom")
 plt.tight_layout(); plt.savefig(FIG_DIR / "fig10_model_comparison.png", dpi=130, bbox_inches="tight"); plt.show()""")
 
-md("""**[Exp 3.4 – Tasks 5 and 6] Compare predicted with actual values and display them in a structured table.**
+md("""**Compare predicted with actual values and display them in a structured table.**
 The table below uses 15 random test trips and the best model.""")
 
 code("""best_pred = predictions[best_name]
@@ -676,7 +674,7 @@ obs("modelling")
 # --------------------------------------------------------------------------- #
 md("""## Stage 6: Interpretation, Documentation and Presentation
 
-**[Exp 3.4 – Task 8] Interpretation of results, usefulness and limitations of the predictions.**""")
+**Interpretation of results, usefulness and limitations of the predictions.**""")
 
 obs("interpretation")
 
