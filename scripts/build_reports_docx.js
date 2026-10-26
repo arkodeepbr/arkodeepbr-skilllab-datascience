@@ -10,7 +10,7 @@ const {
 
 const ROOT = path.resolve(__dirname, "..");
 const data = JSON.parse(fs.readFileSync(process.argv[2], "utf8"));
-const TEAM = "Team members: [add names and USNs]";
+const TEAM = process.env.TEAM_LINE || "Team members: [add names and USNs]";
 const CONTENT_W = 9638; // A4 with 2 cm margins, in DXA
 
 // ---------- helpers ----------
@@ -292,7 +292,7 @@ function proposal() {
 }
 
 (async () => {
-  const out = path.join(ROOT, "reports");
+  const out = process.env.OUT_DIR || path.join(ROOT, "reports");
   fs.writeFileSync(path.join(out, "technical_report.docx"), await Packer.toBuffer(technicalReport()));
   fs.writeFileSync(path.join(out, "project_proposal.docx"), await Packer.toBuffer(proposal()));
   console.log("wrote technical_report.docx and project_proposal.docx");
